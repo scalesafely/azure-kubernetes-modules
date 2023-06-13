@@ -1,92 +1,85 @@
-# Azure Kubernetes Service
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
+| Name | Version |
+|------|---------|
+| <a name="requirement_acme"></a> [acme](#requirement\_acme) | 2.11.1 |
+| <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | 2.30.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.30.0 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | >= 1.7.0 |
+| <a name="requirement_mysql"></a> [mysql](#requirement\_mysql) | ~> 3.0.34 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | = 4.0.4 |
 
+## Providers
 
-## Getting started
+No providers.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Modules
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_scafe_acr"></a> [scafe\_acr](#module\_scafe\_acr) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git | 1.0.0 |
+| <a name="module_scafe_aks"></a> [scafe\_aks](#module\_scafe\_aks) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git | 1.0.0 |
+| <a name="module_scafe_k8s_tools"></a> [scafe\_k8s\_tools](#module\_scafe\_k8s\_tools) | ./modules/k8s-tools | n/a |
+| <a name="module_scafe_key_vault"></a> [scafe\_key\_vault](#module\_scafe\_key\_vault) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_kv4aks.git | 1.0.0 |
+| <a name="module_scafe_mysql"></a> [scafe\_mysql](#module\_scafe\_mysql) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_mysql4aks.git | 1.0.0 |
+| <a name="module_scafe_storage_module"></a> [scafe\_storage\_module](#module\_scafe\_storage\_module) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_storage4aks.git | 1.0.0 |
+| <a name="module_scafe_virtual_network"></a> [scafe\_virtual\_network](#module\_scafe\_virtual\_network) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_network4aks.git | 1.0.0 |
 
-## Add your files
+## Resources
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+No resources.
 
-```
-cd existing_repo
-git remote add origin http://gitlab.aodb.dev/scafe/iac-library/terraform/azure-kubernetes-service.git
-git branch -M main
-git push -uf origin main
-```
+## Inputs
 
-## Integrate with your tools
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_acr_name"></a> [acr\_name](#input\_acr\_name) | n/a | `string` | `"102307121336"` | no |
+| <a name="input_aks_address_subnet_prefixes"></a> [aks\_address\_subnet\_prefixes](#input\_aks\_address\_subnet\_prefixes) | n/a | `list(string)` | <pre>[<br>  "10.1.1.0/24"<br>]</pre> | no |
+| <a name="input_aks_cluster_name"></a> [aks\_cluster\_name](#input\_aks\_cluster\_name) | n/a | `string` | `"akscluster2307121336"` | no |
+| <a name="input_aks_default_node_count"></a> [aks\_default\_node\_count](#input\_aks\_default\_node\_count) | n/a | `number` | `1` | no |
+| <a name="input_aks_default_node_pool_name"></a> [aks\_default\_node\_pool\_name](#input\_aks\_default\_node\_pool\_name) | n/a | `string` | `"p2307121336"` | no |
+| <a name="input_aks_default_node_vm_size"></a> [aks\_default\_node\_vm\_size](#input\_aks\_default\_node\_vm\_size) | n/a | `string` | `"Standard_D2_v3"` | no |
+| <a name="input_aks_dns_prefix"></a> [aks\_dns\_prefix](#input\_aks\_dns\_prefix) | n/a | `string` | `"cluster-dns"` | no |
+| <a name="input_aks_node_count"></a> [aks\_node\_count](#input\_aks\_node\_count) | n/a | `number` | `1` | no |
+| <a name="input_aks_node_pool_name"></a> [aks\_node\_pool\_name](#input\_aks\_node\_pool\_name) | n/a | `string` | `"p230712133"` | no |
+| <a name="input_aks_node_vm_size"></a> [aks\_node\_vm\_size](#input\_aks\_node\_vm\_size) | n/a | `string` | `"Standard_D2_v3"` | no |
+| <a name="input_aks_subnet_name"></a> [aks\_subnet\_name](#input\_aks\_subnet\_name) | n/a | `string` | `"aks-subnet"` | no |
+| <a name="input_appgw_address_prefixes"></a> [appgw\_address\_prefixes](#input\_appgw\_address\_prefixes) | n/a | `list(string)` | <pre>[<br>  "10.1.2.0/24"<br>]</pre> | no |
+| <a name="input_appgw_subnet_name"></a> [appgw\_subnet\_name](#input\_appgw\_subnet\_name) | n/a | `string` | `"appgw-subnet"` | no |
+| <a name="input_azurerm_key"></a> [azurerm\_key](#input\_azurerm\_key) | n/a | `string` | `"tfstate"` | no |
+| <a name="input_azurerm_subnet_address_prefixes"></a> [azurerm\_subnet\_address\_prefixes](#input\_azurerm\_subnet\_address\_prefixes) | n/a | `list(string)` | <pre>[<br>  "10.1.3.0/24"<br>]</pre> | no |
+| <a name="input_azurerm_subnet_name"></a> [azurerm\_subnet\_name](#input\_azurerm\_subnet\_name) | n/a | `string` | `"subnet"` | no |
+| <a name="input_container_name"></a> [container\_name](#input\_container\_name) | n/a | `string` | `"tsftate"` | no |
+| <a name="input_keyvault_enabled_for_disk_encryption"></a> [keyvault\_enabled\_for\_disk\_encryption](#input\_keyvault\_enabled\_for\_disk\_encryption) | n/a | `bool` | `true` | no |
+| <a name="input_keyvault_name"></a> [keyvault\_name](#input\_keyvault\_name) | n/a | `string` | `"aks-keyvault"` | no |
+| <a name="input_keyvault_purge_protection_enabled"></a> [keyvault\_purge\_protection\_enabled](#input\_keyvault\_purge\_protection\_enabled) | n/a | `bool` | `false` | no |
+| <a name="input_keyvault_sku_name"></a> [keyvault\_sku\_name](#input\_keyvault\_sku\_name) | n/a | `string` | `"standard"` | no |
+| <a name="input_keyvault_soft_delete_retention_days"></a> [keyvault\_soft\_delete\_retention\_days](#input\_keyvault\_soft\_delete\_retention\_days) | n/a | `number` | `7` | no |
+| <a name="input_location"></a> [location](#input\_location) | n/a | `string` | `"West Europe"` | no |
+| <a name="input_mysql_backup_retention_days"></a> [mysql\_backup\_retention\_days](#input\_mysql\_backup\_retention\_days) | n/a | `number` | `7` | no |
+| <a name="input_mysql_firewall_rules"></a> [mysql\_firewall\_rules](#input\_mysql\_firewall\_rules) | n/a | <pre>map(object({<br>    name             = string<br>    start_ip_address = string<br>    end_ip_address   = string<br>  }))</pre> | n/a | yes |
+| <a name="input_mysql_infrastructure_encryption_enabled"></a> [mysql\_infrastructure\_encryption\_enabled](#input\_mysql\_infrastructure\_encryption\_enabled) | n/a | `bool` | `false` | no |
+| <a name="input_mysql_password"></a> [mysql\_password](#input\_mysql\_password) | n/a | `string` | `"6k2&/M_=yf8<j7<"` | no |
+| <a name="input_mysql_public_network_access_enabled"></a> [mysql\_public\_network\_access\_enabled](#input\_mysql\_public\_network\_access\_enabled) | n/a | `bool` | `true` | no |
+| <a name="input_mysql_server_name"></a> [mysql\_server\_name](#input\_mysql\_server\_name) | n/a | `string` | `"website2307121336"` | no |
+| <a name="input_mysql_sku_name"></a> [mysql\_sku\_name](#input\_mysql\_sku\_name) | n/a | `string` | `"GP_Gen5_2"` | no |
+| <a name="input_mysql_ssl_enforcement_enabled"></a> [mysql\_ssl\_enforcement\_enabled](#input\_mysql\_ssl\_enforcement\_enabled) | n/a | `bool` | `false` | no |
+| <a name="input_mysql_ssl_minimal_tls_version_enforced"></a> [mysql\_ssl\_minimal\_tls\_version\_enforced](#input\_mysql\_ssl\_minimal\_tls\_version\_enforced) | n/a | `string` | `"TLSEnforcementDisabled"` | no |
+| <a name="input_mysql_storage_mb"></a> [mysql\_storage\_mb](#input\_mysql\_storage\_mb) | n/a | `number` | `171008` | no |
+| <a name="input_mysql_username"></a> [mysql\_username](#input\_mysql\_username) | n/a | `string` | `"scafe_user"` | no |
+| <a name="input_mysql_version"></a> [mysql\_version](#input\_mysql\_version) | n/a | `string` | `"8.0"` | no |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | n/a | `string` | `"aks_modules"` | no |
+| <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | n/a | `string` | `"/subscriptions/367f72ee-5c6f-4c07-b85d-6652ebde98ba/resourceGroups/training"` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | n/a | `string` | `"training"` | no |
+| <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | n/a | `string` | `"scafetrainingsta"` | no |
+| <a name="input_storage_account_name_for_persistence"></a> [storage\_account\_name\_for\_persistence](#input\_storage\_account\_name\_for\_persistence) | n/a | `string` | `"gsa2307121336"` | no |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | `"367f72ee-5c6f-4c07-b85d-6652ebde98ba"` | no |
+| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | `"227c59f6-f5df-49d3-9dd6-b55e2db1e690"` | no |
+| <a name="input_vnet_address_space"></a> [vnet\_address\_space](#input\_vnet\_address\_space) | n/a | `list(string)` | <pre>[<br>  "10.1.0.0/16"<br>]</pre> | no |
+| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | n/a | `string` | `"main-vnet"` | no |
 
-- [ ] [Set up project integrations](http://gitlab.aodb.dev/scafe/iac-library/terraform/azure-kubernetes-service/-/settings/integrations)
+## Outputs
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+No outputs.
+<!-- END_TF_DOCS -->
