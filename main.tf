@@ -63,7 +63,7 @@ module "scafe_mysql" {
 
 #AKS Module
 module "scafe_aks" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git?ref=1.0.0"
+  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_aks.git?ref=1.0.0"
   
   #Variables
   resource_group_name                     = var.resource_group_name
@@ -85,21 +85,21 @@ module "scafe_aks" {
 }
 
 #KeyVault Module
-module "scafe_key_vault" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_kv4aks.git?ref=1.0.0"
-  
-  #Variables
-  resource_group_name                     = var.resource_group_name
-  location                                = var.location
-  keyvault_name                           = var.keyvault_name
-  keyvault_enabled_for_disk_encryption    = var.keyvault_enabled_for_disk_encryption
-  keyvault_purge_protection_enabled       = var.keyvault_purge_protection_enabled
-  keyvault_soft_delete_retention_days     = var.keyvault_soft_delete_retention_days
-  tenant_id                               = var.tenant_id
-  keyvault_sku_name                       = var.keyvault_sku_name
-  aks_principal_id                        = module.scafe_aks.aks_principal_id
-  aks_object_id                           = module.scafe_aks.aks_object_id
-}
+#module "scafe_key_vault" {
+#  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_kv4aks.git?ref=1.0.0"
+#  
+#  #Variables
+#  resource_group_name                     = var.resource_group_name
+#  location                                = var.location
+#  keyvault_name                           = var.keyvault_name
+#  keyvault_enabled_for_disk_encryption    = var.keyvault_enabled_for_disk_encryption
+#  keyvault_purge_protection_enabled       = var.keyvault_purge_protection_enabled
+#  keyvault_soft_delete_retention_days     = var.keyvault_soft_delete_retention_days
+#  tenant_id                               = var.tenant_id
+#  keyvault_sku_name                       = var.keyvault_sku_name
+#  aks_principal_id                        = module.scafe_aks.aks_principal_id
+#  aks_object_id                           = module.scafe_aks.aks_object_id
+#}
 
 #k8s tools Module
 module "scafe_k8s_tools" {
