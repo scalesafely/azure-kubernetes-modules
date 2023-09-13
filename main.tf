@@ -1,6 +1,6 @@
 #ACR Module
 module "scafe_acr" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git?ref=1.0.0"
+  source = "scalesafely/acr/azure"
 
   #Variables
   resource_group_name   = var.resource_group_name
@@ -12,7 +12,7 @@ module "scafe_acr" {
 
 #Storage Module
 module "scafe_storage_module" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_storage4aks.git?ref=1.0.0"
+  source = "scalesafely/storage/azure"
   
   #Variables
   resource_group_name      = var.resource_group_name
@@ -42,7 +42,7 @@ module "scafe_virtual_network" {
 
 #Scafe MySQL Module
 module "scafe_mysql" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_mysql4aks.git?ref=1.0.0"
+  source = "scalesafely/mysql/azure"
   
   #Variables
   mysql_server_name                       = var.mysql_server_name
@@ -63,7 +63,7 @@ module "scafe_mysql" {
 
 #AKS Module
 module "scafe_aks" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_aks.git?ref=1.0.0"
+  source = "scalesafely/aks/azure"
   
   #Variables
   resource_group_name                     = var.resource_group_name
@@ -86,7 +86,7 @@ module "scafe_aks" {
 
 #KeyVault Module
 #module "scafe_key_vault" {
-#  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_kv4aks.git?ref=1.0.0"
+#  source = "scalesafely/kv/azure"
 #  
 #  #Variables
 #  resource_group_name                     = var.resource_group_name
