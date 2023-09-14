@@ -22,7 +22,7 @@ module "scafe_storage_module" {
 
 #Virtual Network Module
 module "scafe_virtual_network" {
-  source = "git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_network4aks.git?ref=1.0.0"
+  source = "scalesafely/network_aks/azure"
   
   #Variables
   resource_group_name = var.resource_group_name

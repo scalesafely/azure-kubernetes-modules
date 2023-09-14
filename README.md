@@ -18,13 +18,13 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_scafe_acr"></a> [scafe\_acr](#module\_scafe\_acr) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git | 1.0.0 |
-| <a name="module_scafe_aks"></a> [scafe\_aks](#module\_scafe\_aks) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_acr4aks.git | 1.0.0 |
+| <a name="module_scafe_acr"></a> [scafe\_acr](#module\_scafe\_acr) | scalesafely/acr/azure | 1.0.0 |
+| <a name="module_scafe_aks"></a> [scafe\_aks](#module\_scafe\_aks) | gscalesafely/aks/azure | 1.0.0 |
 | <a name="module_scafe_k8s_tools"></a> [scafe\_k8s\_tools](#module\_scafe\_k8s\_tools) | ./modules/k8s-tools | n/a |
-| <a name="module_scafe_key_vault"></a> [scafe\_key\_vault](#module\_scafe\_key\_vault) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_kv4aks.git | 1.0.0 |
-| <a name="module_scafe_mysql"></a> [scafe\_mysql](#module\_scafe\_mysql) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_mysql4aks.git | 1.0.0 |
-| <a name="module_scafe_storage_module"></a> [scafe\_storage\_module](#module\_scafe\_storage\_module) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_storage4aks.git | 1.0.0 |
-| <a name="module_scafe_virtual_network"></a> [scafe\_virtual\_network](#module\_scafe\_virtual\_network) | git::http://gitlab.aodb.dev/scafe/library/terraform/modules/azure/scafe_network4aks.git | 1.0.0 |
+| <a name="module_scafe_key_vault"></a> [scafe\_key\_vault](#module\_scafe\_key\_vault) | scalesafely/kv/azure | 1.0.0 |
+| <a name="module_scafe_mysql"></a> [scafe\_mysql](#module\_scafe\_mysql) | scalesafely/mysql/azure | 1.0.0 |
+| <a name="module_scafe_storage_module"></a> [scafe\_storage\_module](#module\_scafe\_storage\_module) | scalesafely/storage/azure | 1.0.0 |
+| <a name="module_scafe_virtual_network"></a> [scafe\_virtual\_network](#module\_scafe\_virtual\_network) | sscalesafely/network_aks/azure | 1.0.0 |
 
 ## Resources
 
